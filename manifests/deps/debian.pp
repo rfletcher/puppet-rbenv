@@ -15,6 +15,10 @@ class rbenv::deps::debian {
     package { 'libssl-dev': ensure => installed }
   }
 
+  if ! defined(Package['pkg-config']) {
+    package { 'pkg-config': ensure => installed }
+  }
+
   if ! defined(Package['zlib1g-dev']) {
     package { 'zlib1g-dev': ensure => installed }
   }
