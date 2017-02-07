@@ -64,6 +64,9 @@ class rbenv (
 ) inherits rbenv::deps {
   include rbenv::deps
 
+  Class['::rbenv::deps'] -> Rbenv::Build <| |>
+  Class['::rbenv::deps'] -> Rbenv::Gem <| |>
+
   exec { 'git-clone-rbenv':
     command => "/usr/bin/git clone ${rbenv::repo_path} ${install_dir}",
     creates => $install_dir,
