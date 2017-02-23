@@ -49,7 +49,7 @@ define rbenv::gem(
   $gem          = $title,
   $version      = '>=0',
   $ruby_version = undef,
-  $skip_docs    = false,
+  $skip_docs    = true,
   $timeout      = 300,
 ) {
   include rbenv
