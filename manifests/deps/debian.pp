@@ -7,8 +7,17 @@ class rbenv::deps::debian {
     package { 'build-essential': ensure => installed }
   }
 
-  if ! defined(Package['libreadline6-dev']) {
-    package { 'libreadline6-dev': ensure => installed }
+  case $::lsbdistcodename {
+    'bionic': {
+      $libreadline_package_name = 'libreadline-dev'
+    }
+    default: {
+      $libreadline_package_name = 'libreadline6-dev'
+    }
+  }
+
+  if ! defined(Package[$libreadline_package_name]) {
+    package { $libreadline_package_name: ensure => installed }
   }
 
   if ! defined(Package['libssl-dev']) {
