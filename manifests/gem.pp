@@ -60,7 +60,7 @@ define rbenv::gem(
 
   $docs = $skip_docs ? {
     /false/ => '',
-    /true/  => '--no-ri --no-rdoc'
+    /true/  => '--no-document'
   }
 
   exec { "gem-install-${gem}-${ruby_version}":
