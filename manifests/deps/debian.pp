@@ -8,7 +8,7 @@ class rbenv::deps::debian {
   }
 
   case $::lsbdistcodename {
-    'bionic': {
+    'bionic', 'focal': {
       $libreadline_package_name = 'libreadline-dev'
     }
     default: {
